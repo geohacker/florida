@@ -1,0 +1,74 @@
+<html>
+<title> Florida </title>
+<head>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+	<link rel="stylesheet" type="text/css" href="libs/label/leaflet.label.css">
+	<script type="text/javascript" src="data/data.js"></script>
+	<script type="text/javascript" src="libs/label/leaflet.label.js"></script>
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+
+<style type="text/css">
+	#map {
+		height: 100%;
+	}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+function init(){
+	var agencyStyle = {
+    "fillColor": "#ff7800",
+    "fillOpacity": 0,
+    "weight": 3,
+    "color": "#000"
+	};
+		
+	var circuitStyle = {
+    "fillColor": "#be77ef",
+    "weight": 3,
+    "fillOpacity": 0,
+    "color": "#be77ef",
+	};	
+
+	var regionStyle = {
+    "fillColor": "#877352",
+    "weight": 3,
+    "fillOpacity": 0,
+    "color": "#877352",
+	};
+	var map = L.map('map').setView([28.048, -81.343], 7);
+	var mapquestUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+	subDomains = ['otile1','otile2','otile3','otile4'];
+	var mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 10, subdomains: subDomains});
+	mapquest.addTo(map);
+
+	var agencylayer = L.geoJson(agency, {style: agencyStyle, onEachFeature: onEachFeature}); 
+	var circuitlayer = L.geoJson(circuit, {style: circuitStyle}); 
+	var regionlayer = L.geoJson(region, {style: regionStyle}); 
+
+	function onEachFeature(feature, layer) {
+    if (feature.properties) {
+        layer.bindLabel(feature.properties.ID, { noHide: true });
+    }
+}
+
+	var overlays = {
+    "Regions": regionlayer,
+    "Agencies": agencylayer,
+    "Circuits": circuitlayer
+	};
+
+	L.control.layers(null, overlays, {collapsed:false}).addTo(map);
+	map.on('overlayadd', function () {
+		map.showLabel(agencylayer);
+	});
+
+	}
+window.onload = init;
+</script>
+</body>
+</html>
