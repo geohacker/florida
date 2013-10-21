@@ -13,6 +13,20 @@ d3.json("data/regions.json", function(json) {
 svg.selectAll("path")
 .data(json.features)
 .enter().append("path")
-.attr("d", path)
-});
+.attr("d", path) });
+
+d3.select('#circuits').on('click', changeGeo);
+d3.select('#regions').on('click', changeGeo);
+d3.select('#agencies').on('click', changeGeo);
+
+function changeGeo() {
+	geoType = d3.select(this).attr('id').substring(0);
+	d3.selectAll("path").remove();
+		d3.json("data/"+geoType+".json", function(json) {
+		svg.selectAll("path")
+		.data(json.features)
+		.enter().append("path")
+		.attr("d", path);
+	});
+}
 
