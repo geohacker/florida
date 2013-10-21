@@ -43,10 +43,12 @@ function changeGeo() {
 
 function mouseover(d) {
 	d3.select('#name').classed('hide', false);
+	d3.select('#help').classed('hide', true);
 	d3.select('#name').text(activeGeo+' - '+d.properties.ID);
 }
 
 function mouseout(d) {
+	d3.select('#help').classed('hide', false);
 	d3.select('#name').classed('hide', true);
 }
 

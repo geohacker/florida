@@ -13,9 +13,11 @@ svg {
 }
 
 .shapes path {
-  stroke: #fff;
+  stroke: #000;
   stroke-width: .55px;
   opacity: 1;
+  fill: #8fccc0;
+
 }
 
 .shapes path:hover {
@@ -33,6 +35,7 @@ svg {
 .box {
 	background: rgb(248, 248, 248);
 	border-radius: 5px;
+	border-color: rgb(230, 230, 230);
 }
 
 .map {
