@@ -1,0 +1,42 @@
+body {
+padding: 30px;
+}
+
+.navbar {
+margin-bottom: 30px;
+}
+
+.container {
+	max-width: none !important;
+}
+
+.row {
+	/*margin: 0px !important;*/
+}
+
+.box {
+	background: rgb(248, 248, 248);
+	border-radius: 5px;
+}
+
+.map {
+	height: 400px;
+}
+
+.kpi{
+	height: 100px;
+	margin-top: 15px;
+}
+
+.infobox{
+	height: 300px;
+}
+
+.charts{
+	height: 300px;
+	margin-top: 15px;
+}
+
+.div-right {
+	margin-left: 15px;
+}
