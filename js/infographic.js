@@ -1,0 +1,18 @@
+width = $('#map').width();
+var xy = d3.geo.mercator()
+.center([-83.393,28.076])
+.scale(3000)
+.translate([width/2, 500/2]);
+var path = d3.geo.path().projection(xy);
+
+var svg = d3.select("#map")
+.append("svg")
+.attr("class", "shapes");
+
+d3.json("data/regions.json", function(json) {
+svg.selectAll("path")
+.data(json.features)
+.enter().append("path")
+.attr("d", path)
+});
+
