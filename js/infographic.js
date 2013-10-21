@@ -5,38 +5,48 @@ var xy = d3.geo.mercator()
 .translate([width/2, 500/2]);
 var path = d3.geo.path().projection(xy);
 
+var activeGeo = 'Region';
+
 var svg = d3.select("#map")
 .append("svg")
 .attr("class", "shapes");
 
-d3.json("data/regions.json", function(json) {
+d3.json("data/region.json", function(json) {
 svg.selectAll("path")
 .data(json.features)
 .enter().append("path")
 .attr("d", path)
 .on("mouseover", mouseover)
+.on("mouseout", mouseout);
+
 });
 
-d3.select('#circuits').on('click', changeGeo);
-d3.select('#regions').on('click', changeGeo);
-d3.select('#agencies').on('click', changeGeo);
+d3.select('#circuit').on('click', changeGeo);
+d3.select('#region').on('click', changeGeo);
+d3.select('#agency').on('click', changeGeo);
 
 function changeGeo() {
 	$(this).parent().addClass('active');
 	$(this).parent().siblings().removeClass('active');
 	geoType = d3.select(this).attr('id').substring(0);
+	activeGeo = geoType[0].toUpperCase()+geoType.substring(1);
 	d3.selectAll("path").remove();
 		d3.json("data/"+geoType+".json", function(json) {
 		svg.selectAll("path")
 		.data(json.features)
 		.enter().append("path")
 		.attr("d", path)
-		.on("mouseover", mouseover);
+		.on("mouseover", mouseover)
+		.on("mouseout", mouseout);
 	});
 }
 
 function mouseover(d) {
-	d3.select('#name').text('ID - '+d.properties.ID);
-	// console.log(d);
+	d3.select('#name').classed('hide', false);
+	d3.select('#name').text(activeGeo+' - '+d.properties.ID);
+}
+
+function mouseout(d) {
+	d3.select('#name').classed('hide', true);
 }
 
