@@ -36,11 +36,12 @@
               <li><a href="#">1992</a></li>
             </ul>
           </li>
-          <li><a href="#">Region</a></li>
-          <li><a href="#">Circuit</a></li>
-          <li><a href="#">Agency</a></li>
+          <li class="active"><a id="region" href="#">Regions</a></li>
+          <li><a id="circuit" href="#">Circuits</a></li>
+          <li><a id="agency" href="#">Agencies</a></li>
 
           <!-- Uncomment the following if we need the geo-type as a drop-down -->
+
       <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Area <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -48,7 +49,8 @@
                 <li><a href="#">1991</a></li>
                 <li><a href="#">1992</a></li>
               </ul>
-            </li>   -->          
+            </li>   -->  
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -56,15 +58,30 @@
       <div class="row-fluid">
         <div class="col-xs-6">
           <div class="row">
-            <div class="map box"></div>
+            <div class="map box" id="map"></div>
           </div>
-          <div class="row">
-            <div class="kpi box"></div>
+          <div class="kpi row">
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 1</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 2</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 3</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 4</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 5</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 6</button></div>
           </div>
+          <div class="kpi row">
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 7</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 8</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 9</button></div>
+              <div class="col-xs-2"><button type="button" class="btn btn-default">KPI 10</button></div>
+            </div>
         </div>
         <div class="col-xs-6">
           <div class="row">
-            <div class="infobox div-right box"></div>
+            <div class="infobox text-center div-right box">
+              <div id="help">Select the period and geography from above. Hover over for more information.</div>
+              <div id="name"></div>
+              <div id="value"></div>
+            </div>
           </div>
           <div class="row">
             <div class="charts div-right box"></div>
@@ -76,6 +93,8 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="libs/jquery/jquery.js"></script>
-    <script src="/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/d3/d3.v3.min.js"></script>
+    <script src="js/infographic.js"></script>
   </body>
   </html>
