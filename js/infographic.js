@@ -16,7 +16,10 @@ var activeKpi = 'kpi1'
 
 var svg = d3.select("#map")
 .append("svg")
-.attr("class", "shapes");
+.attr("class", "shapes Blues");
+
+// In the above line, change Blues to Purples, Reds, Greens or Oranges
+// based on what color you want the map to be.
 
 // Load the region map data.
 
