@@ -59,6 +59,7 @@ svg.selectAll("path")
 d3.select('#circuit').on('click', changeGeo);
 d3.select('#region').on('click', changeGeo);
 d3.select('#agency').on('click', changeGeo);
+d3.select('#county').on('click', changeGeo);
 
 function changeGeo() {
 	$(this).parent().addClass('active');
